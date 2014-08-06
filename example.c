@@ -4,9 +4,7 @@
 
 #include "hiredis.h"
 
-#ifdef _WIN32
-#define snprintf sprintf_s
-#endif
+
 
 int main(void) {
     unsigned int j;

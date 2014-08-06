@@ -24,7 +24,10 @@ net.o: net.c fmacros.h net.h hiredis.h
 async.o: async.c async.h hiredis.h sds.h dict.c dict.h
 	$(CC) -c async.c $(CFLAGS)
 
-example.o: example.c hiredis.h $(CFLAGS)
+example: example.o net.o async.o hiredis.o sds.o
+	 $(CC) -o example.exe example.o net.o async.o hiredis.o sds.o -g -Wall -I. -lm -lmingw32 -lws2_32 -lmsvcrt -m32
+
+example.o: example.c hiredis.h 
 	$(CC) -c example.c $(CFLAGS)
 
 hiredis.o: hiredis.c fmacros.h hiredis.h net.h sds.h
