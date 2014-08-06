@@ -33,7 +33,12 @@
 #ifndef __NET_H
 #define __NET_H
 
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include "config.h"
 #include "hiredis.h"
+#include "stdlib.h"
+
 
 #if defined(__sun)
 #define AF_LOCAL AF_UNIX
@@ -43,6 +48,7 @@ int redisCheckSocketError(redisContext *c, int fd);
 int redisContextSetTimeout(redisContext *c, struct timeval tv);
 int redisContextConnectTcp(redisContext *c, const char *addr, int port, struct timeval *timeout);
 #ifndef _WIN32
+void strerror_r(int err, char *str, size_t str_len);
 int redisContextConnectUnix(redisContext *c, const char *path, struct timeval *timeout);
 #endif
 

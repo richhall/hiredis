@@ -38,6 +38,9 @@
 #ifndef _WIN32
 #include <sys/time.h> /* for struct timeval */
 #else
+#define _WINSOCKAPI_ 1
+#define WIN32_LEAN_AND_MEAN 1
+#define MINGW_HAS_SECURE_API 1
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #endif

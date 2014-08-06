@@ -20,10 +20,10 @@ Does absolutely nothing for Unix!
 
 #define EINPROGRESS WSAEINPROGRESS
 
-#define snprintf sprintf_s
+/*#define snprintf sprintf_s
 #define strcasecmp strcmp
 #define strncasecmp _strnicmp
-#define strerror_r(errorno, buf, len) strerror_s(buf, len, errorno)
+#define strerror_r(errorno, buf, len) strerror_s(buf, len, errorno)*/
 
 #endif
 

@@ -29,6 +29,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+#define WINVER 0x0601
+#define _WIN32_WINNT 0x0601
+ 
 
 #include "config.h"
 #include "fmacros.h"
@@ -45,6 +48,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #endif
+
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -61,6 +65,14 @@ int errnox = EINPROGRESS;
 #else
 #define SETERRNO
 #endif
+
+void strerror_r(int err, char *str, size_t str_len)
+{
+    if (err < sys_nerr)
+        snprintf(str, str_len, "%s", sys_errlist[err]);
+    else
+        snprintf(str, str_len, "Unknown error %d", err);
+}
 
 /* Defined in hiredis.c */
 void __redisSetError(redisContext *c, int type, const char *str);
