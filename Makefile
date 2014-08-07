@@ -16,7 +16,7 @@ CFLAGS=-g -Wall -I. -lm -shared  -lmingw32 -lws2_32 -lmsvcrt -m32
 static: hiredislib
 	
 hiredislib: net.o async.o hiredis.o sds.o
-	$(CC) -o hiredislib.a net.o async.o hiredis.o sds.o $(CFLAGS)
+	$(CC) -o libhiredis.a net.o async.o hiredis.o sds.o $(CFLAGS)
 	
 net.o: net.c fmacros.h net.h hiredis.h
 	$(CC) -c net.c $(CFLAGS)
